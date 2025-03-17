@@ -12,5 +12,4 @@ Interface simples e intuitiva.
 Impede nomes duplicados.
 Sorteio 100% aleatório.
 
-Autor do jogo:
-Brenda Ramos Câmara
+
