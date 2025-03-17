@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amigo Secreto</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <h1>Amigo Secreto 🎁</h1>
+        <input type="text" id="nome" placeholder="Digite o nome">
+        <button onclick="adicionarNome()">Adicionar</button>
+
+        <h2>Lista de Participantes</h2>
+        <ul id="lista"></ul>
+
+        <button onclick="sortearAmigo()">Sortear Amigo</button>
+        <p id="resultado"></p>
+    </div>
+
+    <script>
+        let nomes = [];
+
+        function adicionarNome() {
+            let input = document.getElementById("nome");
+            let nome = input.value.trim();
+
+            if (nome === "") {
+                alert("Digite um nome válido!");
+                return;
+            }
+
+            if (nomes.includes(nome)) {
+                alert("Este nome já foi adicionado!");
+                return;
+            }
+
+            nomes.push(nome);
+            atualizarLista();
+            input.value = "";
+        }
+
+        function atualizarLista() {
+            let lista = document.getElementById("lista");
+            lista.innerHTML = "";
+
+            nomes.forEach(nome => {
+                let li = document.createElement("li");
+                li.textContent = nome;
+                lista.appendChild(li);
+            });
+        }
+
+        function sortearAmigo() {
+            if (nomes.length < 2) {
+                alert("Adicione pelo menos dois participantes para o sorteio!");
+                return;
+            }
+
+            let sorteado = nomes[Math.floor(Math.random() * nomes.length)];
+            document.getElementById("resultado").textContent = `🎉 O amigo secreto é: ${sorteado}!`;
+        }
+    </script>
+
+</body>
+</html>
